@@ -31,3 +31,9 @@
 | User Detail Drawer | `web/src/App.vue` drawer |
 | Status Tag | `status` class |
 | Primary Button | `.primary` |
+
+## 已创建文件
+
+- Figma 文件：[Trae Code CN CRM 用户管理原型](https://www.figma.com/design/pD4DUyLyTR1ylac4XAvnI7)
+- 已创建可编辑页面：用户列表、新建用户、用户详情。
+- Code Connect 映射未写入：当前 Figma Starter 计划不具备 Code Connect 所需的 Dev/Full Organization 或 Enterprise 权限；代码映射已在本文件和组件命名中保留，可升级权限后补录。
