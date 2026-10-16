@@ -1,0 +1,12 @@
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="3.128181">
+<testsuite name="crm.spec.ts" timestamp="2026-10-16T13:40:38.889Z" hostname="chromium" tests="4" failures="0" skipped="0" time="1.368" errors="0">
+<testcase name="用户列表加载与搜索筛选" classname="crm.spec.ts" time="0.378">
+</testcase>
+<testcase name="新增用户与校验" classname="crm.spec.ts" time="0.469">
+</testcase>
+<testcase name="查看、编辑与停用用户" classname="crm.spec.ts" time="0.309">
+</testcase>
+<testcase name="空状态与重置筛选" classname="crm.spec.ts" time="0.212">
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,2 @@
+import { defineConfig, devices } from '@playwright/test';
+export default defineConfig({testDir:'tests',use:{baseURL:'http://localhost:4174',trace:'retain-on-failure',channel:'chrome'},reporter:[['list'],['html',{outputFolder:'playwright-report',open:'never'}],['junit',{outputFile:'reports/junit.xml'}]],webServer:[{command:'npm run dev:server',url:'http://localhost:4175/api/health',reuseExistingServer:true},{command:'npm run dev:web',url:'http://localhost:4174',reuseExistingServer:true}],projects:[{name:'chromium',use:{...devices['Desktop Chrome']}}]});
