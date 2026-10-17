@@ -2,10 +2,19 @@
 
 ## 执行信息
 
-- 执行时间：2026-10-16
+- 执行时间：2026-10-17
 - API 检查：`npm run test:api` 通过
 - E2E：`npm test`，Chromium 4/4 通过
 - 构建：`npm run build` 通过
+- 代码检查：`git diff --check` 通过
+
+## 三层测试覆盖
+
+| 层级 | 验证内容 | 结果 |
+|---|---|---|
+| 当前功能 | 用户列表、搜索、新增、表单校验、编辑、详情、停用、空状态 | 通过 |
+| 相关模块 | 前端筛选与列表更新、API 健康检查、缺字段错误响应 | 通过 |
+| 核心业务回归 | 用户状态语义、数据展示、详情入口和 API 基础契约 | 通过 |
 
 ## 覆盖场景
 
@@ -22,4 +31,10 @@
 
 首次运行发现新增用户校验用例被原生 `required` 约束拦截，无法展示产品内校验反馈。保留测试断言，调整表单为由业务逻辑统一展示错误提示后，完整测试集 4/4 通过。
 
-详细 HTML 报告：`playwright-report/index.html`；JUnit：`reports/junit.xml`。
+演示时必须保留失败日志，修复实现后重新运行，不修改断言、不删除用例、不降低校验标准。
+
+## 生成物
+
+- HTML 报告：`playwright-report/index.html`
+- JUnit：`reports/junit.xml`
+- API 检查：终端输出 `API contract checks passed`

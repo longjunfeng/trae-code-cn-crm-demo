@@ -195,3 +195,42 @@ npm run preview   # 预览构建后的前端
 ```
 
 更多阶段说明见 [`docs/demo-runbook.md`](docs/demo-runbook.md)。
+
+## 六类工程风险演示路径
+
+本节把课件六个章节映射到项目中的可操作材料。现场按“分析 → 评审 → 实现 → 测试 → 审查”的节奏推进。
+
+| 课件章节 | 项目材料 | 演示重点 |
+|---|---|---|
+| 问题一：项目记忆 | `AGENTS.md`、`docs/business-rules.md` | 让项目自己记住规则 |
+| 问题二：全局失控 | `docs/impact-analysis-template.md` | 先分析影响，再修改代码 |
+| 问题三：承重墙 | `docs/risk-map.md` | 修改公共代码前回答四个问题 |
+| 问题四：变更范围 | `docs/change-budget.md` | 用白名单和 diff 控制变更预算 |
+| 问题五：编译不等于正确 | `tests/`、`docs/test-report.md` | 当前功能、相关模块、核心业务三层测试 |
+| 问题六：同源盲区 | `docs/prompts/`、`docs/session-handoff-template.md` | 分析者、实现者、审查者三角色分立 |
+
+### 逐章演示操作
+
+1. **项目记忆**：打开 `AGENTS.md` 和 `docs/business-rules.md`，让分析者先总结规则，再要求指出规则对应的代码和测试。
+2. **影响分析**：使用 `docs/impact-analysis-template.md`，运行只读分析提示词，人工确认影响链和回归范围后再进入实现。
+3. **承重墙**：打开 `docs/risk-map.md`，让 Codex 识别 `server/src/index.ts`、`web/src/App.vue` 和测试文件的调用方，演示修改前四问。
+4. **变更预算**：打开 `docs/change-budget.md`，让实现者按白名单完成角色筛选，并用 `git diff --stat` 检查范围。
+5. **红绿测试**：先运行一条预设失败测试，记录失败证据；修复实现后执行 `npm run test:api`、`npm test` 和 `npm run build`。
+6. **独立审查**：新建独立审查会话，使用 `docs/prompts/reviewer.md` 检查需求、无关修改、权限、数据隔离和 API 兼容性。
+
+### 插件和工具对应关系
+
+- **lark-doc**：读取飞书课件、按章节插入操作卡并重新读取验证 revision。
+- **Figma 相关技能**：查看或创建用户列表、用户表单、详情和异常状态原型，并对照 `docs/figma-handoff.md`。
+- **Playwright**：执行浏览器端用户流程和生成 HTML/JUnit 报告。
+- **Sites**：构建 `dist/` 并验证 Trae 私有站点部署。
+- **Codex 独立会话**：分别承担分析者、实现者和审查者职责。
+
+每章的完整提示词、操作命令、产物和评审点见 [`docs/demo-runbook.md`](docs/demo-runbook.md)。
+
+### 已验证的 Site 资产
+
+- 当前生产版本：Trae Site version 3
+- 当前生产 URL：<https://trae-code-cn-crm-demo.elated-crumb-8816.chatgpt.site>
+- 访问策略：私有自定义访问，仅保留站点所有者
+- Sites project id：`appgprj_6ad229990eb081919549c252ca01ea75`
