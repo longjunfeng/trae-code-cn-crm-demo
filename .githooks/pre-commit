@@ -1,0 +1,40 @@
+#!/bin/sh
+# pre-commit 钩子：提交前运行测试，失败则阻止提交
+# 跳过方式：git commit --no-verify
+
+ROOT="$(git rev-parse --show-toplevel)"
+SERVER_PID=""
+
+cleanup() {
+  if [ -n "$SERVER_PID" ]; then
+    kill "$SERVER_PID" 2>/dev/null
+    wait "$SERVER_PID" 2>/dev/null
+  fi
+}
+trap cleanup EXIT
+
+# 若 4175 端口无服务，则后台启动 API 服务用于契约测试
+if ! curl -sf http://localhost:4175/api/health > /dev/null 2>&1; then
+  echo "[pre-commit] 启动 API 服务..."
+  (cd "$ROOT" && npm run dev:server > /tmp/pre-commit-server.log 2>&1) &
+  SERVER_PID=$!
+  for i in $(seq 1 30); do
+    curl -sf http://localhost:4175/api/health > /dev/null 2>&1 && break
+    sleep 1
+  done
+fi
+
+echo "[pre-commit] 运行 API 契约测试..."
+(cd "$ROOT" && npm run test:api) || {
+  echo "[pre-commit] API 测试失败，提交已阻止。修复后重试，或使用 git commit --no-verify 跳过。"
+  exit 1
+}
+
+echo "[pre-commit] 运行 Playwright E2E 测试（会自动启动/复用服务）..."
+(cd "$ROOT" && npm test) || {
+  echo "[pre-commit] E2E 测试失败，提交已阻止。修复后重试，或使用 git commit --no-verify 跳过。"
+  exit 1
+}
+
+echo "[pre-commit] 全部测试通过，允许提交。"
+exit 0

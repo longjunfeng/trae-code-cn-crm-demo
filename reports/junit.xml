@@ -1,12 +1,36 @@
-<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="4.688866999999999">
-<testsuite name="crm.spec.ts" timestamp="2026-10-17T02:52:05.442Z" hostname="chromium" tests="4" failures="0" skipped="0" time="2.084" errors="0">
-<testcase name="用户列表加载与搜索筛选" classname="crm.spec.ts" time="0.758">
+<testsuites id="" name="" tests="14" failures="0" skipped="0" errors="0" time="4.571256999999999">
+<testsuite name="crm.spec.ts" timestamp="2026-10-18T01:02:17.143Z" hostname="chromium" tests="4" failures="0" skipped="0" time="1.967" errors="0">
+<testcase name="用户列表加载与搜索筛选" classname="crm.spec.ts" time="0.716">
 </testcase>
-<testcase name="新增用户与校验" classname="crm.spec.ts" time="0.311">
+<testcase name="新增用户与校验" classname="crm.spec.ts" time="0.507">
 </testcase>
-<testcase name="查看、编辑与停用用户" classname="crm.spec.ts" time="0.739">
+<testcase name="查看、编辑与停用用户" classname="crm.spec.ts" time="0.465">
 </testcase>
-<testcase name="空状态与重置筛选" classname="crm.spec.ts" time="0.276">
+<testcase name="空状态与重置筛选" classname="crm.spec.ts" time="0.279">
+</testcase>
+</testsuite>
+<testsuite name="e2e/crm-feature.spec.ts" timestamp="2026-10-18T01:02:17.143Z" hostname="chromium" tests="6" failures="0" skipped="0" time="2.662" errors="0">
+<testcase name="CRM 用户管理功能用例 › CRM-001 用户列表展示全部六项字段" classname="e2e/crm-feature.spec.ts" time="0.711">
+</testcase>
+<testcase name="CRM 用户管理功能用例 › CRM-002 搜索与筛选：关键词、角色、状态、组合与空状态" classname="e2e/crm-feature.spec.ts" time="0.452">
+</testcase>
+<testcase name="CRM 用户管理功能用例 › CRM-003 新建用户：非法邮箱阻止提交，合法数据创建成功" classname="e2e/crm-feature.spec.ts" time="0.468">
+</testcase>
+<testcase name="CRM 用户管理功能用例 › CRM-004 编辑用户保存后列表即时更新" classname="e2e/crm-feature.spec.ts" time="0.34">
+</testcase>
+<testcase name="CRM 用户管理功能用例 › CRM-005 用户详情抽屉展示全部属性并提供编辑入口" classname="e2e/crm-feature.spec.ts" time="0.267">
+</testcase>
+<testcase name="CRM 用户管理功能用例 › CRM-006 停用与启用用户，状态标签即时切换" classname="e2e/crm-feature.spec.ts" time="0.424">
+</testcase>
+</testsuite>
+<testsuite name="e2e/smoke.spec.ts" timestamp="2026-10-18T01:02:17.143Z" hostname="chromium" tests="4" failures="0" skipped="0" time="1.513" errors="0">
+<testcase name="冒烟用例（回归基线） › 冒烟-01 页面加载与用户列表渲染" classname="e2e/smoke.spec.ts" time="0.698">
+</testcase>
+<testcase name="冒烟用例（回归基线） › 冒烟-02 新建用户核心链路" classname="e2e/smoke.spec.ts" time="0.451">
+</testcase>
+<testcase name="冒烟用例（回归基线） › 冒烟-03 搜索与状态切换核心链路" classname="e2e/smoke.spec.ts" time="0.338">
+</testcase>
+<testcase name="冒烟用例（回归基线） › 冒烟-04 API 健康检查（CRM-008）" classname="e2e/smoke.spec.ts" time="0.026">
 </testcase>
 </testsuite>
 </testsuites>

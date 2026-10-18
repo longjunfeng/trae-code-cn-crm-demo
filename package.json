@@ -8,8 +8,23 @@
     "build": "vite build --config web/vite.config.ts",
     "test": "playwright test",
     "test:api": "tsx server/src/api.test.ts",
+    "test:unit": "vitest run tests/单元测试 --reporter=default --reporter=junit --outputFile=test-results/unit-junit.xml",
+    "test:integration": "vitest run tests/集成测试 --reporter=default --reporter=junit --outputFile=test-results/integration-junit.xml",
     "preview": "vite preview --config web/vite.config.ts"
   },
-  "dependencies": { "@vitejs/plugin-vue": "latest", "concurrently": "latest", "express": "latest", "tsx": "latest", "vite": "latest", "vue": "latest" },
-  "devDependencies": { "@playwright/test": "latest", "typescript": "latest" }
+  "dependencies": {
+    "@vitejs/plugin-vue": "latest",
+    "concurrently": "latest",
+    "express": "latest",
+    "tsx": "latest",
+    "vite": "latest",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "@playwright/test": "latest",
+    "@vue/test-utils": "^2.5.1",
+    "happy-dom": "^21.0.3",
+    "typescript": "latest",
+    "vitest": "^5.0.5"
+  }
 }
